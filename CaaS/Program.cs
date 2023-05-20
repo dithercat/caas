@@ -75,7 +75,7 @@ namespace CaaS
                                 ProcessStartInfo psi = new ProcessStartInfo
                                 {
                                     FileName = root + "\\bin\\say.exe",
-                                    Arguments = "-w \"" + tmpfile + "\"",
+                                    Arguments = "-pre \"[:phone on]\" -w \"" + tmpfile + "\"",
                                     WorkingDirectory = root + "\\bin",
                                     RedirectStandardInput = true,
                                     UseShellExecute = false,
@@ -85,8 +85,10 @@ namespace CaaS
                                 proc.StandardInput.Write(input);
                                 proc.StandardInput.Close();
                                 proc.WaitForExit();
-                                byte[] fst = File.ReadAllBytes(tmpfile);
-                                res.OutputStream.Write(fst, 0, fst.Length);
+                                byte[] buffer = File.ReadAllBytes(tmpfile);
+                                res.ContentType = "audio/wav";
+                                res.ContentLength64 = buffer.Length;
+                                res.OutputStream.Write(buffer, 0, buffer.Length);
                                 res.OutputStream.Close();
                                 break;
                             }
