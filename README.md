@@ -1,6 +1,6 @@
 # CaaS ("Clippy as a Service")
 
-![clippy](./239db45d4230b918b48d44d75de397af.png)
+![clippy](repo/microservice.png)
 
 win32 microservice used by my chat bot. targets .NET FX 4.0.
 
@@ -13,3 +13,5 @@ the only thing currently really of note for most people is the clippy generator,
 current features:
 - `/clippy` clippy image generator
 - `/dectalk` say.exe wrapper (you need to have say.exe in `(app root)/bin/say.exe`)
+
+![architecture](repo/architecture_half.png)
